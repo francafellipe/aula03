@@ -1,0 +1,45 @@
+function saque(sacarValor) {
+    return (saldo -= sacarValor);
+}
+
+function depositar(valorDepositar) {
+    return (saldo += valorDepositar);
+}
+
+let saldo = 1000;
+
+while (true) {
+    var escolha = prompt(`Escolha uma opção :\n 1 - Verificar o Saldo \n 2 - Fazer Saque \n 3 - Realizar depósito \n 0 - Sair `);
+    switch (escolha) {
+        case '1':
+            alert(`O seu saldo é de ${saldo}`);
+            break;
+
+        case '2':
+            var sacarValor = prompt('Qual valor deseja sacar?');
+            sacarValor = parseFloat(sacarValor);
+            if (sacarValor <= saldo && sacarValor !== 0 && !isNaN(sacarValor)) {
+                saque(sacarValor);
+                alert(`Saque realizado com sucesso - Seu saldo é de ${saldo}`);
+            } else if (sacarValor > saldo) {
+                alert('Saldo insuficiente para sacar!');
+            }
+            break;
+
+        case '3':
+            var valorDepositar = prompt('Qual valor deseja depositar?');
+            valorDepositar = parseFloat(valorDepositar);
+            if (valorDepositar > 0 && !isNaN(valorDepositar)) {
+                depositar(valorDepositar);
+                document.write(`Seu saldo é de ${saldo}`);
+            }
+            break;
+
+        case '0':
+            alert('Obrigado por utilizar nossos serviços! Volte sempre!');
+            break;
+
+        default:
+            alert('Opção inválida');
+    }
+}
